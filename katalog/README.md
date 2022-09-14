@@ -5,7 +5,7 @@
 1.
 Bagan:
 
-![this is an image](/images/diagram.png)
+![this is an image](https://raw.githubusercontent.com/FrinzTheCoder/tugas2pbp/main/katalog/images/diagram.png)
 
 diadaptasi dari https://twitter.com/datacamp/status/1040578453341437952?lang=ms
 
