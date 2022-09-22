@@ -5,8 +5,17 @@ from django.core import serializers
 
 def show_html(request):
     data = MyWatchList.objects.all()
+    sudah = MyWatchList.objects.filter(watched='Sudah').count()
+    belum = MyWatchList.objects.filter(watched='Belum').count()
+
+    if sudah >= belum:
+        msg = "Selamat, kamu sudah banyak menonton!"
+    else:
+        msg = "Wah, kamu masih sedikit menonton!"
+
     context = {
-        'list_watchlist': data
+        'list_watchlist': data,
+        'msg':msg
     }
 
     return render(request, 'mywatchlist.html', context)
