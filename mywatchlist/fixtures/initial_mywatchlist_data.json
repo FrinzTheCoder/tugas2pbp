@@ -1,0 +1,123 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Terminator 2: Judgment Day",
+            "rating": 5,
+            "release_date": "1991-07-03",
+            "review":"Filmnya bagus, keren, dar der dar der."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": "Sudah",
+            "title": "LOREM FILM 2",
+            "rating": 4,
+            "release_date": "2002-12-19",
+            "review":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": "Belum",
+            "title": "LOREM FILM 3",
+            "rating": 3,
+            "release_date": "1991-01-01",
+            "review":"amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": "Belum",
+            "title": "The Imitation Game",
+            "rating": 5,
+            "release_date": "2014-09-28",
+            "review":"Heking Heking Alan Turing."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": "Belum",
+            "title": "A Brief History of Time",
+            "rating": 5,
+            "release_date": "1991-10-01",
+            "review":"Hawking radiation is black body radiation that is theorized to be released outside a black hole's event horizon because of relativistic quantum effects. It is named after the physicist Stephen Hawking, who developed a theoretical argument for its existence in 1974."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Capek buat film, 6",
+            "rating": 1,
+            "release_date": "2022-12-31",
+            "review":"Apa kek."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": "Belum",
+            "title": "Apa kek 7",
+            "rating": 1,
+            "release_date": "2014-09-28",
+            "review":"Bebas yg penting kelar."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Dua lagi, dua lagii",
+            "rating": 2,
+            "release_date": "2000-01-01",
+            "review":"Dua film lagi"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": "Sudah",
+            "title": "UNIX EPOCH",
+            "rating": 5,
+            "release_date": "1970-01-01",
+            "review":"Tanggal pertama yang tercatat di UNIX TIME"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": "Belum",
+            "title": "32-bit Limit",
+            "rating": 5,
+            "release_date": "2038-01-19",
+            "review":"Lewat dari ini, 32-bit unix time bakal jebol."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 11,
+        "fields": {
+            "watched": "Sudah",
+            "title": "Bonus deh",
+            "rating": 5,
+            "release_date": "2002-12-19",
+            "review":"Ganyadar udah kelebihan 1."
+        }
+    }
+]
