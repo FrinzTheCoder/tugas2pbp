@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>Tugas 4 PBP/PBD</h1>
+
+  <h2>Name: </h5>
+  <p>Muhammad Falensi Azmi</p>
+
+  <h2>Student ID: </h5>
+  <p>2106630334</p>
+
+  <br><br><br>
+
+  <p>Logged in as: {{user}}</p>
+  <button><a href="{% url 'todolist:create-task' %}">Tambah Task Baru</a></button>
+  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+  <br><br>
+
+  <table border='1'>
+    <tr>
+      <th style="width:30%">Tanggal Pembuatan</th>
+      <th style="width:20%">Judul</th>
+      <th style="width:200%">Deskripsi</th>
+      <th>Selesai(T/F)</th>
+      <th>Ubah Status</th>
+      <th>Hapus Task</th>
+    </tr>
+    {% for item in list_todolist %}
+    <tr>
+      <td>{{item.date}}</th>
+      <td>{{item.title}}</th>
+      <td>{{item.description}}</th>
+      <td>{{item.is_finished}}</td>
+
+      <td><form action="/todolist/update/{{item.id}}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="ubah">
+      </form></td>
+
+      <td><form action="/todolist/delete/{{item.id}}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="hapus">
+      </form></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <br><br>
+
+  <h5>Sesi terakhir login: {{ last_login }}</h5>
+
+ {% endblock content %}
