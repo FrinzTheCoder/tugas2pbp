@@ -6,15 +6,22 @@
 
 {% block content %}
 
-<form method="POST" >  
-    {% csrf_token %}  
-    <table>  
-        {{ form.as_table }}  
-        <tr>  
-            <td></td>
-            <td><input type="submit" name="submit"/></td>  
-        </tr>  
-    </table>  
-</form>
+<div class="mt-5 col-md-8 mx-auto container">
+    <h1 class="text-gray mb-5">Task Baru</h1>  
+    <form method="POST" >  
+        {% csrf_token %}  
+        <table class="table table-striped table-bordered table-hover">  
+            {{ form.as_table }}  
+            <tr>  
+                <td></td>
+                <td><input type="submit" name="submit" class="btn btn-primary"></td>  
+            </tr>  
+        </table>  
+    </form>
+    <h5 class="mt-5">
+        <a href="{% url 'todolist:show_todolist' %}">Kembali</a>
+    </h5>
+</div>
+
 
 {% endblock content %}

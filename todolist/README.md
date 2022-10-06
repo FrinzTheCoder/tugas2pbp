@@ -1,5 +1,5 @@
 # Muhammad Falensi Azmi - 2106630334 - Kelas D
-# Tugas 4 PBP
+# Tugas 4 & 5 PBP
 ## Link aplikasi: https://tugas2pbp-falensiazmi.herokuapp.com/todolist/
 
 1. 
@@ -53,3 +53,60 @@ menampilkan user yang sedang login, menambahkan tombol tambah task dan logout, m
 - Saya menambahkan README.md yang berisi penjelasan mengenai project atau app yang saya buat.
 
 - Terakhir, saya melakukan deployment ke heroku agar aplikasi saya dapat diakses melalui web.
+
+#
+
+# Tugas 5
+
+#
+
+1. 
+- Inline CSS adalah penggunaan CSS yang ditempatkan menyatu dengan element yang ingin diberi style. Cara penggunaannya adalah dengan menuliskan style="(sintaks styling)" langsung di dalam tag html yang ingin diberi style.
+
+- Internal CSS adalah penggunaan CSS yang ditempatkan di satu dokumen HTML yang sama. Cara penggunaannya adalah dengan mendefinisikan styling di bagian header. Selanjutnya, elemen di bagian body yang dikenakan styling tersebut akan terkena efeknya.
+
+- External CSS adalah penggunaan CSS dengan mendefinisikan styling di file yang terpisah. Nantinya, styling yang terpisah ini akan dihubungkan dengan tag "link" pada dokumen html yang ingin menggunakan styling di file CSS tersebut.
+
+Kelebihan inline CSS adalah kita bisa memberikan styling kepada satu tag spesifik yang ingin kita berikan styling. Kekurangannya dari cara ini adalah tidak praktis jika kita ingin memberikan styling kepada beberapa tag karena kita harus copy-paste terus menerus ke tag yang ingin kita beri styling.
+
+Kelebihan internal CSS adalah kita dapat memberikan styling terhadap satu dokumen HTML yang spesifik. Dengan cara ini, kita bisa melakukan modifikasi pada styling suatu halaman tanpa perlu khawatir styling di halaman lain ikut berubah juga. Kekurangan dari styling ini adalah tidak praktis jika kita ingin memberikan styling kepada beberapa dokumen HTML karena kita harus copy-paste CSS nya ke setiap dokumen yang ingin kita beri styling.
+
+Kelebihan external CSS adalah kita dapat menerapkannya ke seluruh dokumen yang ingin kita beri styling karena tinggal di import saja. Jika kita melakukan perubahan pada CSS, halaman-halaman HTML yang menggunakan CSS tersebut juga akan ikut berubah sehingga kita tidak perlu melakukan modifikasi satu per satu. Kekurangan dari styling ini adalah page HTML harus melakukan fetch setiap kali membutuhkan styling CSS (karena berbeda file). Selain itu, belum tentu semua styling di suatu file CSS diperlukan pada suatu dokumen HTML sehingga dokumen HTML juga akan me-load styling yang sebenarnya tidak digunakan dalam file HTML tersebut.
+
+2. 
+"nav"
+Tag nav digunakan untuk merepresentasikan link navigasi (link yang akan merujuk ke halaman lain atau halaman itu sendiri). Contoh dari pengunaan tag nav adalah untuk membuat menu, table of content, dan index.
+
+"article"
+Merupakan representasi dari konten yang "independen" dari sebuah dokumen (misalnya entri blog).
+
+"audio"
+Untuk menambahkan konten dalam bentuk audio/suara ke dokumen html
+
+"header"
+Merepresentasikan header dari suatu halaman. Biasanya berisi "introductory content" atau link-link navigasi.
+
+"footer"
+Merepresentasikan footer dari suatu halaman. Biasanya berisi informasi penulis halaman, kontak penulis,copyright, dan lainnya.
+
+
+3. 
+Element selector: menerapkan styling dengan menggunakan tag HTML sebagai selector untuk mengubah properti yang ada di dalam tag tersebut. Biasa ditulis dalam format (nama_tag){styling}
+
+ID selector: menggunakan ID sebagai selector. ID dapat ditambahkan pada tag html yang ingin diberi style. ID harus bersifat unik. Selector ini menggunakan format #(nama_id){styling}
+
+Class selector: menggunakan class sebagai sebagai selector. Class dapat ditambahkan pada tag html yang ingin diberi style. Berbeda dengan ID, class tidak bersifat unik sehingga dapat diterapkan di beberapa tag berbeda. Selector ini menggunakan format .(nama_class){styling}
+
+4. 
+
+- Menambahkan tag "link" pada header di base.html yang berisi link menuju bootstrap. Link ini diperlukan untuk mengambil CSS dari Bootstrap agar CSS tersebut dapat diterapkan pada dokumen html kita. Dalam kasus ini, tag "link" ditambahkan pada base.html karena semua dokumen html yang lain (login, register, dll) menggunakan base.html sebagai basis template (semacam parent). Hal ini bisa mempermudah kita karena kita tidak perlu menuliskan tag link di setiap dokumen yang ingin kita beri style.
+
+- Mempercantik halaman login, register, dan create_task dengan berbagai styling yang disediakan oleh Bootstrap. Pada proyek saya, styling yang diterapkan ke dokumen yang berisi halaman login, register, dan create task tidak begitu berbeda satu sama lainnya.
+
+- Menerapkan styling pada todolist.html dan mengubah tabel todolist menjadi dalam bentuk card. Di sini, saya menggunakan class row untuk mengatur card dalam bentuk baris dan class card untuk membuat card itu sendiri. Kedua class ini merupakan bawaan dari Bootstrap sehingga saya hanya perlu menerapkannya saja. Selain itu, saya juga menambahkan gambar dummy dari https://www.computerhope.com/jargon/t/task.png untuk dipasang di card saya (untuk memperindah).
+
+- Menambahkan penjelasan di README.md terkait Tugas 5
+
+- Melakukan deployment ke Heroku agar aplikasi saya dapat diakses melalui web.
+
+#

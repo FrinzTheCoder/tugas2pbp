@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
 
- {% block content %}
+{% block meta %}
+<style>
+.card:hover{
+  background-color: lightgray;
+}
+</style>
+{% endblock meta %}
 
+{% block content %}
+
+<div class="mt-5 col-md-10 mx-auto container">
   <h1>Tugas 4 PBP/PBD</h1>
+
+  <br>
 
   <h2>Name: </h5>
   <p>Muhammad Falensi Azmi</p>
@@ -13,11 +24,44 @@
   <br><br><br>
 
   <p>Logged in as: {{user}}</p>
-  <button><a href="{% url 'todolist:create-task' %}">Tambah Task Baru</a></button>
-  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
-  <br><br>
 
-  <table border='1'>
+  <div class="gap-2">
+    <a href="{% url 'todolist:create-task' %}" class="btn btn-primary">Tambah Task Baru</a>
+    <a href="{% url 'todolist:logout' %}" class="btn btn-danger">Logout</a>
+  </div>
+  
+  <br><br>
+  
+  <div class="row row-cols-auto g-4">
+    {% for item in list_todolist %}
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="https://www.computerhope.com/jargon/t/task.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.description}}</p>
+            <p class="card-text">Selesai: {{item.is_finished}}</p>
+            
+            <div class="d-grid gap-2">
+              <form action="/todolist/update/{{item.id}}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="ubah" class="btn btn-primary">
+              </form>
+              <form action="/todolist/delete/{{item.id}}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="hapus" class="btn btn-danger">
+              </form>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Ditambahkan pada: {{item.date}}</small>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- <table border='1'>
     <tr>
       <th style="width:30%">Tanggal Pembuatan</th>
       <th style="width:20%">Judul</th>
@@ -44,10 +88,11 @@
       </form></td>
     </tr>
     {% endfor %}
-  </table>
+  </table> -->
 
   <br><br>
 
   <h5>Sesi terakhir login: {{ last_login }}</h5>
+</div>
 
- {% endblock content %}
+{% endblock content %}
