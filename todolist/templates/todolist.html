@@ -26,73 +26,102 @@
   <p>Logged in as: {{user}}</p>
 
   <div class="gap-2">
-    <a href="{% url 'todolist:create-task' %}" class="btn btn-primary">Tambah Task Baru</a>
-    <a href="{% url 'todolist:logout' %}" class="btn btn-danger">Logout</a>
-  </div>
-  
-  <br><br>
-  
-  <div class="row row-cols-auto g-4">
-    {% for item in list_todolist %}
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="https://www.computerhope.com/jargon/t/task.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{item.title}}</h5>
-            <p class="card-text">{{item.description}}</p>
-            <p class="card-text">Selesai: {{item.is_finished}}</p>
-            
-            <div class="d-grid gap-2">
-              <form action="/todolist/update/{{item.id}}" method="POST">
-                {% csrf_token %}
-                <input type="submit" value="ubah" class="btn btn-primary">
-              </form>
-              <form action="/todolist/delete/{{item.id}}" method="POST">
-                {% csrf_token %}
-                <input type="submit" value="hapus" class="btn btn-danger">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Tambah Task
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Task Baru</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mt-5 mx-auto container">
+              <form method="POST" id="create_form" onsubmit="return false;">
+                  {% csrf_token %}  
+                  <table class="table table-striped table-bordered table-hover">  
+                    {{ form.as_table }}  
+                    <td></td>
+                    <td><input type="submit" name="submit" class="btn btn-primary" id="tombol_submit" data-bs-dismiss="modal"></td> 
+                  </table>  
               </form>
             </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">Ditambahkan pada: {{item.date}}</small>
-          </div>
         </div>
       </div>
-    {% endfor %}
+    </div>
+
+    <a href="{% url 'todolist:logout' %}" class="btn btn-danger">Logout</a>
+
   </div>
 
-  <!-- <table border='1'>
-    <tr>
-      <th style="width:30%">Tanggal Pembuatan</th>
-      <th style="width:20%">Judul</th>
-      <th style="width:200%">Deskripsi</th>
-      <th>Selesai(T/F)</th>
-      <th>Ubah Status</th>
-      <th>Hapus Task</th>
-    </tr>
-    {% for item in list_todolist %}
-    <tr>
-      <td>{{item.date}}</th>
-      <td>{{item.title}}</th>
-      <td>{{item.description}}</th>
-      <td>{{item.is_finished}}</td>
-
-      <td><form action="/todolist/update/{{item.id}}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="ubah">
-      </form></td>
-
-      <td><form action="/todolist/delete/{{item.id}}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="hapus">
-      </form></td>
-    </tr>
-    {% endfor %}
-  </table> -->
+  <br><br>
+  
+  <div class="row row-cols-auto g-4" id="myrow">
+  </div>
 
   <br><br>
 
   <h5>Sesi terakhir login: {{ last_login }}</h5>
 </div>
 
+<script>
+  async function getTodolist() {
+    return fetch("json").then((res) => res.json())
+  }
+
+  async function refreshTodolist() {
+        document.getElementById("myrow").innerHTML = ""
+        const todolist = await getTodolist()
+        let htmlString = ''
+        todolist.forEach((item) => {
+          htmlString += `
+          <div class="col">
+          <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="https://www.computerhope.com/jargon/t/task.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">${item.fields.title}</h5>
+            <p class="card-text">${item.fields.description}</p>
+            <p class="card-text">Selesai: ${item.fields.is_finished}</p>
+            
+            <div class="d-grid gap-2">
+              <form action="/todolist/update/${item.pk}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Ubah" class="btn btn-primary">
+              </form>
+              <form method="POST" onsubmit="return false;">
+                <input type="submit" value="Hapus" class="btn btn-danger" onclick="deleteTodolist(${item.pk})">
+              </form>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Ditambahkan pada: ${item.fields.date}</small>
+          </div>
+        </div>
+      </div>
+          `
+        })
+        document.getElementById("myrow").innerHTML = htmlString
+  }
+
+  function addTodolist() {
+    fetch("add", {
+          method: "POST",
+          body: new FormData(document.querySelector('#create_form'))
+      }).then(refreshTodolist)
+    return false
+  }
+
+  function deleteTodolist(id) {
+    fetch("delete/"+id, {
+          method: "POST",
+      }).then(refreshTodolist)
+    return false
+  }
+
+  document.getElementById("tombol_submit").onclick = addTodolist;
+  refreshTodolist()
+</script>
 {% endblock content %}
